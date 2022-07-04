@@ -7,6 +7,18 @@ function resolve(dir) {
 }
 
 module.exports = defineConfig({
+  outputDir: 'dist',
+  assetsDir: 'static',
+  publicPath: process.env.NODE_ENV === 'production' ? '/large-screen-ui/' : '/',
+  lintOnSave: process.env.NODE_ENV === 'development',
+  productionSourceMap: false,
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+      },
+    },
+  },
   transpileDependencies: true,
   chainWebpack(config) {
     // set svg-sprite-loader
