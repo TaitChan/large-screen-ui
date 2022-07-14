@@ -1,0 +1,32 @@
+export const domList = [
+  {
+    cardId: 'bar-simple',
+    title: '柱状图',
+    description: '柱状图',
+    w: 400,
+    h: 400,
+    x: 0,
+    y: 0,
+    id: 1,
+  },
+  {
+    cardId: 'line-simple',
+    title: '折线图',
+    description: '折线图',
+    w: 400,
+    h: 400,
+    x: 400,
+    y: 0,
+    id: 2,
+  },
+  {
+    cardId: 'pie-simple',
+    title: '饼图',
+    description: '饼图',
+    w: 400,
+    h: 400,
+    x: 400,
+    y: 400,
+    id: 3,
+  },
+]

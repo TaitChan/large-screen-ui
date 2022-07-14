@@ -31,6 +31,10 @@
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
 }
 
+.grid-template-columns-50-percent{
+  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+}
+
 .grid-gap-0{
   grid-gap: 0;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="right-container">
+  <div>
     <div class="page-setting">页面设置</div>
-    <el-form>
+    <el-form class="padding-10px">
       <el-form-item label="屏幕宽度">
         <el-input-number v-model="screenWidth" />
       </el-form-item>
@@ -25,7 +25,7 @@
   import { storeToRefs } from 'pinia'
   import { useScreenStore } from '@/stores/screen'
   export default {
-    name: 'HomepageRight',
+    name: 'homepage-right',
     setup() {
       const store = useScreenStore()
       const { screenWidth, screenHeight, bgColor, layoutColor, layoutBorder } = storeToRefs(store)
@@ -41,10 +41,5 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .right-container {
-    form {
-      padding: 10px;
-    }
   }
 </style>

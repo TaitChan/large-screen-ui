@@ -7,8 +7,6 @@ import components from './components'
 import * as echarts from 'echarts'
 import './icons/index.js'
 import 'element-plus/dist/index.css'
-import 'gridstack/dist/gridstack.min.css'
-import 'gridstack/dist/h5/gridstack-dd-native'
 import './styles/index.scss'
 
 const pinia = createPinia()

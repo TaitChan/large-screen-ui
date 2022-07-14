@@ -12,8 +12,10 @@
 </template>
 
 <script>
+  import SvgIcon from '@/components/svg-icon'
   export default {
-    name: 'HomepageHeader',
+    name: 'homepage-header',
+    components: { SvgIcon },
   }
 </script>
 
