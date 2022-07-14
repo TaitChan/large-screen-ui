@@ -25,6 +25,7 @@
 <script>
   import SvgIcon from '@/components/svg-icon'
   import { useScreenStore } from '@/stores/screen'
+  import { chartList } from '@/views/homepage/mock'
 
   export default {
     name: 'homepage-left',
@@ -43,26 +44,13 @@
           { label: '表格', value: 'table', icon: '表格' },
           { label: '其他', value: 'other', icon: '其他' },
         ],
-        chartList: [
-          {
-            label: '柱状图',
-            picUrl: 'bar-simple',
-          },
-          {
-            label: '折线图',
-            picUrl: 'line-simple',
-          },
-          {
-            label: '饼图',
-            picUrl: 'pie-simple',
-          },
-        ],
+        chartList,
       }
     },
     methods: {
       dragstart(event, item) {
         console.log(item)
-        this.setDragstartDom(item.option)
+        this.setDragstartDom(item)
       },
     },
   }

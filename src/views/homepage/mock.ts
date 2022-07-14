@@ -1,3 +1,26 @@
+export const chartList = [
+  {
+    label: '柱状图',
+    picUrl: 'bar-simple',
+    cardId: 'bar-simple',
+    w: 400,
+    h: 400,
+  },
+  {
+    label: '折线图',
+    picUrl: 'line-simple',
+    cardId: 'line-simple',
+    w: 400,
+    h: 400,
+  },
+  {
+    label: '饼图',
+    picUrl: 'pie-simple',
+    cardId: 'pie-simple',
+    w: 400,
+    h: 400,
+  },
+]
 export const domList = [
   {
     cardId: 'bar-simple',

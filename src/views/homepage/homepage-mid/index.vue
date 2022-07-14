@@ -1,5 +1,11 @@
 <template>
-  <div :style="{ background: bgColor }" style="position: relative; height: 100%; width: 100%" @click="clearActive">
+  <div
+    :style="{ background: bgColor }"
+    style="position: relative; height: 100%; width: 100%"
+    @click="clearActive"
+    @drop="handleDrop"
+    @dragover.prevent
+  >
     <!--    拖动组件-->
     <homepage-drag-item
       v-for="(item, index) in editItemList"
@@ -59,19 +65,41 @@
       return {
         activeId: '',
         editItemList: domList,
-        offsetX: 0,
-        offsetY: 0,
         isMove: false,
         isCircleMove: false,
       }
     },
     watch: {},
-    mounted() {},
+
+    mounted() {
+      document.onkeydown = (e) => {
+        if (this.activeId && e.code === 'Backspace') {
+          const index = this.editItemList.findIndex((v) => v.id === this.activeId)
+          this.editItemList.splice(index, 1)
+        }
+      }
+    },
     methods: {
+      handleDrop(event) {
+        const { cardId, w, h } = this.dragstartDom
+        const id = new Date().getTime()
+        this.editItemList.push({
+          id,
+          cardId,
+          w,
+          h,
+          x: event.offsetX,
+          y: event.offsetY,
+        })
+        this.activeId = id
+      },
       clearActive() {
         this.activeId = ''
         console.log(this.editItemList)
       },
+    },
+    unmounted() {
+      document.onkeydown = null
     },
   }
 </script>
