@@ -1,5 +1,6 @@
 <template>
   <div
+    @touchstart="handleTouchStart($event, modelValue)"
     @mousedown="handleMouseDown($event, modelValue)"
     class="ct-grid-item"
     :class="`${isActive ? 'active ' : ''}`"
@@ -51,6 +52,33 @@
       },
     },
     methods: {
+      handleTouchStart(event, item) {
+        console.log('handleTouchStart')
+        if (this.isActive === false) {
+          return false
+        }
+        this.clientX = event.touches[0].clientX
+        this.clientY = event.touches[0].clientY
+        this.x = item.x
+        this.y = item.y
+        this.isItemMove = true
+        this.$emit('update:isMove', true)
+        document.ontouchmove = (ev) => {
+          console.log(ev)
+          // ev.preventDefault()
+          // ev.stopPropagation()
+          ev.passive = false
+          console.log('ontouchmove')
+          item.x = this.x + (ev.touches[0].clientX - this.clientX) / this.scaleVal
+          item.y = this.y + (ev.touches[0].clientY - this.clientY) / this.scaleVal
+          this.$emit('update:modelValue', item)
+        }
+        document.ontouchend = () => {
+          document.ontouchmove = document.ontouchend = null
+          this.isItemMove = false
+          this.$emit('update:isMove', false)
+        }
+      },
       handleMouseDown(event, item) {
         console.log('handleMouseDown')
         if (this.isActive === false) {
@@ -63,7 +91,7 @@
         this.isItemMove = true
         this.$emit('update:isMove', true)
         document.onmousemove = (ev) => {
-          console.log('handleMouseMove')
+          console.log('onmousemove')
           item.x = this.x + (ev.clientX - this.clientX) / this.scaleVal
           item.y = this.y + (ev.clientY - this.clientY) / this.scaleVal
           this.$emit('update:modelValue', item)
